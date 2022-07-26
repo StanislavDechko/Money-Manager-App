@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h2><span>Dashboard</span> | Hello, username!</h2>
+        <p class="secondary-text">{{ now | date: "HH:mm, dd MMMM yyyy" }}</p>
+    </div>
+    <div class="dashboard-content">
+        <div class="bills-container">
+            <div class="cards-header">
+                <h2>My bills</h2>
+            </div>
+            <div class="bills">
+                <span class="material-symbols-outlined">add</span>
+            </div>
+        </div>
+        <div class="balance-container">
+            <div class="balance-header">
+                <h2>Balance</h2>
+            </div>
+            <div class="balance-info"></div>
+        </div>
+    </div>
+</div>

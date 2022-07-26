@@ -1,0 +1,52 @@
+@import "../../scss/config";
+
+.dashboard-container {
+    width: 100%;
+    height: 50vh;
+    background-color: white;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: $box-shadow;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: 20% auto;
+
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+            color: $text-color-blue;
+        }
+    }
+
+    .dashboard-content {
+        display: grid;
+        grid-template-columns: 70% auto;
+
+        .bills-container {
+            padding-right: 2rem;
+            border-right: 2px solid $primary-background-color;
+
+            .bills {
+                padding-top: 1rem;
+            }
+
+            span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 60px;
+                width: 60px;
+                border: 2px dashed $primary-text-color;
+                border-radius: 12px;
+                font-size: 30px;
+                cursor: pointer;
+            }
+        }
+
+        .balance-container {
+            padding-left: 2rem;
+        }
+    }
+}
