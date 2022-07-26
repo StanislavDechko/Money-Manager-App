@@ -1,0 +1,32 @@
+<div class="sidebar-container" id="sidebar">
+    <div class="header">
+        <div class="logo">
+            <img src="../../../assets/images/bg.png" alt="logo" />
+            <h2>Money Manager</h2>
+        </div>
+        <div class="menu-btn-container" *ngIf="showMenuButtons()"  (click)="toggleMenuState()">
+            <span id="close-btn" *ngIf="menuActive" class="material-symbols-outlined">close</span>
+            <span id="menu-btn" *ngIf="!menuActive" class="material-symbols-outlined">menu</span>
+        </div>
+    </div>
+    <div class="navbar-items">
+        <a routerLink="">
+            <span class="material-symbols-outlined">dashboard</span>
+            <h3>Dashboard</h3>
+        </a>
+        <a routerLink="profile">
+            <span class="material-symbols-outlined">person</span>
+            <h3>Profile</h3>
+        </a>
+        <a routerLink="settings">
+            <span class="material-symbols-outlined">tune</span>
+            <h3>Settings</h3>
+        </a>
+    </div>
+    <div class="log-out">
+        <a href="#">
+            <span class="material-symbols-outlined">logout</span>
+            <h3>Log Out</h3>
+        </a>
+    </div>
+</div>

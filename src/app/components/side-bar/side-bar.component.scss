@@ -1,0 +1,79 @@
+@import '../../scss/config';
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    background-color: $secondary-background-color;
+    border-bottom-right-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    box-shadow: $box-shadow;
+    position: relative;
+    transition: all .3s ease-in-out;
+    padding: 2rem;
+
+    span {
+        margin: 0 10px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+            }
+        }
+
+        .menu-btn-container {
+            top: 1rem;
+            right: 0.5rem;
+            cursor: pointer;
+            border-radius: 15px;
+
+            span {
+                display: grid;
+                place-content: center;
+                height: 60px;
+                width: 40px;
+            }
+
+            &:hover {
+                background-color: $primary-background-color;
+            }
+        }
+    }
+
+    .navbar-items {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .2s ease-in-out;
+        height: 3.6rem;
+        border-radius: 15px;
+
+        &:hover {
+            color: $text-color-blue;
+            background-color: $primary-background-color;
+        }
+    }
+}
+
+@import '../src/app/scss/mobile';
