@@ -1,0 +1,5 @@
+<div class="bill" [ngClass]="{'active': bill.isActive}" [style.--background-color]="bill.ui.backgroundColor" [style.--text-color]="bill.ui.textColor">
+    <h2>{{ bill.name }}</h2>
+    <h1>{{ bill.balance.currency }}{{ bill.balance.cashAmount }}</h1>
+    <span class="material-symbols-outlined" (click)="editBill()">edit</span>
+</div>

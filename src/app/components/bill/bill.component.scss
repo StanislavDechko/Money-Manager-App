@@ -1,0 +1,37 @@
+@import "../../scss/config";
+
+.bill {
+    width: 250px;
+    height: 150px;
+    background: var(--background-color);
+    border-radius: 20px;
+    padding: 20px;
+    color: var(--text-color);
+    display: flex;
+    border: var(--border);
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    
+    span {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: rdba(0, 0, 0, 1);
+    }
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    &.active {
+        box-shadow: 0px 5px 10px 2px var(--background-color);
+    }
+}
+
+@import "../../scss/mobile";

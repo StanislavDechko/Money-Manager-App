@@ -1,0 +1,50 @@
+@import "../../scss/config";
+
+.balance {
+    height: 100px;
+
+    h1 {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        font-size: 54px;
+    }
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 200px;
+}
+
+.stats-info {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap: 5px;
+
+    .up-icon, .down-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: $primary-background-color;
+    }
+
+    .up-icon {
+        color: #87CEA1;
+    }
+
+    .down-icon {
+        color: #DA7678;
+    }
+}
+
