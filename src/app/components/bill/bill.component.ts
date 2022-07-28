@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Bill } from 'src/app/interfaces/Bill';
 
 @Component({
@@ -8,6 +8,7 @@ import { Bill } from 'src/app/interfaces/Bill';
 })
 export class BillComponent implements OnInit {
   @Input() bill!: Bill;
+  @Output() editButtonClicked: EventEmitter<any> = new EventEmitter<any>();
   
   constructor() { }
 
@@ -15,6 +16,6 @@ export class BillComponent implements OnInit {
   }
 
   editBill(): void {
-
+    this.editButtonClicked.emit();
   }
 }

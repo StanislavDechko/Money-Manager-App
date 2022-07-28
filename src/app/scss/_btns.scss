@@ -1,0 +1,18 @@
+@import "./config";
+
+.btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: $text-color-blue;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+.btn-primary {
+    background-color: $text-color-blue;
+    color: white;
+}

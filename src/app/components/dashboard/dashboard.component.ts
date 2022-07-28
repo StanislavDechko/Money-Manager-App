@@ -1,7 +1,9 @@
+import { BillManipulationModalComponent } from './../modals/bill-manipulation-modal/bill-manipulation-modal.component';
 import { UserServiceService as UserService } from '../../services/user.service';
 import { Bill } from './../../interfaces/Bill';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -119,7 +121,7 @@ export class DashboardComponent implements OnInit {
     nav: true,
     responsive: {
       0: {
-        items: 0
+        items: 1
       },
       260: {
         items: 1
@@ -142,7 +144,7 @@ export class DashboardComponent implements OnInit {
     },
   }
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.getUser().subscribe(response => {
@@ -157,5 +159,26 @@ export class DashboardComponent implements OnInit {
   makeActive(index: number): void {
     this.bills.map(bill => bill.isActive = false);
     this.bills[index].isActive = true;
+  }
+
+  openAddBillDialog(): void {
+    this.openDialog("New Bill");
+  }
+
+  openEditBillDialog(): void {
+    this.openDialog("Edit Bill");
+  }
+
+  private openDialog(title: string): void {
+    const dialogRef = this.dialog.open(BillManipulationModalComponent, {
+      data: {
+        title: title,
+        submitButtonText: title == "New Bill" ? "Create" : "Edit",
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

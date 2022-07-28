@@ -1,0 +1,27 @@
+@import "../../../scss/btns";
+
+::ng-deep .mat-dialog-container {
+    width: 30vw;
+    height: 60vh;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-container {
+    height: 100%;
+    width: 100%;
+}
+
+.bill-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: end;
+}

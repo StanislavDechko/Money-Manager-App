@@ -17,6 +17,7 @@
     
     span {
         position: absolute;
+        display: none;
         top: 20px;
         right: 20px;
         height: 20px;
@@ -27,6 +28,10 @@
 
     &:hover {
         transform: scale(1.02);
+
+        span {
+            display: block;
+        }
     }
 
     &.active {

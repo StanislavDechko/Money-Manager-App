@@ -1,0 +1,18 @@
+<form [formGroup]="form" class="form" >
+    <div class="form-control">
+        <label class="form-label" for="bill-name">Background Color</label>
+        <input [(colorPicker)]="bill.ui.backgroundColor" [style.background]="bill.ui.backgroundColor" class="picker"/>
+    </div>
+    
+    <div class="form-control">
+        <label class="form-label" for="currency">Text Color</label>
+        <input [(colorPicker)]="bill.ui.textColor" [style.background]="bill.ui.textColor" class="picker">
+    </div>
+    
+    <div class="customization-btn-container" (click)="onNavigationButtonClicked()">
+        <div class="customization-btn">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <p>Bill Info</p>
+        </div>
+    </div>
+</form>

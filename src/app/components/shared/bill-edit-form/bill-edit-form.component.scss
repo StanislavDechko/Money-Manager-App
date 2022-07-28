@@ -1,0 +1,20 @@
+@import "../../../scss/forms";
+
+.customization-btn-container {
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+}
+
+.customization-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(34, 60, 80, 0.2);
+    cursor: pointer;
+}
+
+.customization-btn:hover {
+    color: $text-color-blue;
+}
