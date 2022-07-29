@@ -23,13 +23,13 @@
     }
 
     .dashboard-content {
-        display: grid;
-        grid-template-columns: 70% auto;
+        display: flex;
 
         .bills-container {
             padding-right: 2rem;
             height: 100%;
             width: 100%;
+            flex-basis: 70%;
             border-right: 2px solid $primary-background-color;
 
             .bills {

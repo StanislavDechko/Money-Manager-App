@@ -12,7 +12,7 @@
                 <span class="material-symbols-outlined add" (click)="openAddBillDialog()">add</span>
                 <owl-carousel-o [options]="customOptions" class="carousel">
                       <ng-template carouselSlide *ngFor="let bill of bills; let i = index">
-                        <app-bill [bill]="bill" (dblclick)="makeActive(i)" (editButtonClicked)="openEditBillDialog()"></app-bill>
+                        <app-bill [bill]="bill" (dblclick)="makeActive(bill)" (editButtonClicked)="openEditBillDialog(bill)"></app-bill>
                       </ng-template>
                 </owl-carousel-o>
             </div>

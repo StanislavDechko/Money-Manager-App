@@ -1,9 +1,9 @@
 <div class="modal-container">
     <h1>{{ data.title }}</h1>
     <div>
-        <app-bill [bill]="bill" class="bill-container"></app-bill>
-        <app-bill-edit-form *ngIf="showFirst" [bill]="bill" (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-edit-form>
-        <app-bill-ui-edit-form *ngIf="!showFirst" [bill]="bill" (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-ui-edit-form>
+        <app-bill [bill]="data.bill" class="bill-container"></app-bill>
+        <app-bill-edit-form *ngIf="showFirst" [bill]="data.bill" (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-edit-form>
+        <app-bill-ui-edit-form *ngIf="!showFirst" [bill]="data.bill" (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-ui-edit-form>
     </div>
     <div mat-dialog-actions class="btns-container">
         <button mat-button class="btn" (click)="close()">Cancel</button>

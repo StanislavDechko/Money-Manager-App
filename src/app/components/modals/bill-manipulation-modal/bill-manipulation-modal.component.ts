@@ -8,19 +8,6 @@ import { Bill } from 'src/app/interfaces/Bill';
   styleUrls: ['./bill-manipulation-modal.component.scss']
 })
 export class BillManipulationModalComponent implements OnInit {
-  bill: Bill = {
-    isActive: false,
-    name: "<name>",
-    ui: {
-      backgroundColor: "#F3F3F3",
-      textColor: "#9c9c9c",
-      border: "2px dashed #9c9c9c"
-    },
-    balance: {
-      cashAmount: "0",
-      currency: "$",
-    }
-  };
   showFirst: Boolean = true;
 
   constructor(

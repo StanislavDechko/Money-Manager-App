@@ -20,6 +20,7 @@ import { BillEditFormComponent } from './components/shared/bill-edit-form/bill-e
 import { BillUiEditFormComponent } from './components/shared/bill-ui-edit-form/bill-ui-edit-form.component';
 import { BillManipulationModalComponent } from './components/modals/bill-manipulation-modal/bill-manipulation-modal.component';
 import { AccessTokenInterceptor } from './services/helpers/AccessTokenInterceptor';
+import { LatestTransactionsComponent } from './components/latest-transactions/latest-transactions.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     BillEditFormComponent,
     BillUiEditFormComponent,
     BillManipulationModalComponent,
+    LatestTransactionsComponent,
     StatisticsComponent
   ],
   imports: [

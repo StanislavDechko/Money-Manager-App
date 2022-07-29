@@ -1,7 +1,6 @@
 import { BillManipulationModalComponent } from './../modals/bill-manipulation-modal/bill-manipulation-modal.component';
-import { UserServiceService as UserService } from '../../services/user.service';
-import { Bill } from './../../interfaces/Bill';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Bill, getDefaultBill } from './../../interfaces/Bill';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -13,104 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DashboardComponent implements OnInit {
   now: Date = new Date();
-  user!: string;
-  bills: Bill[] = [{
-    name: "Main",
-    isActive: true,
-    balance: {
-      cashAmount: "1",
-      currency: "$",
-      history: {
-        totalIncome: 100,
-        totalExpenses: 50
-      }
-    },
-    ui: {
-      textColor: "white",
-      backgroundColor: "black",
-      border: "2px solid red"
-    }
-  }, {
-    name: "Main",
-    isActive: true,
-    balance: {
-      cashAmount: "2",
-      currency: "$",
-      history: {
-        totalIncome: 100,
-        totalExpenses: 50
-      }
-    },
-    ui: {
-      textColor: "white",
-      backgroundColor: "red",
-      border: "2px solid red"
-    }
-  }, {
-    name: "Main",
-    isActive: true,
-    balance: {
-      cashAmount: "3",
-      currency: "$",
-      history: {
-        totalIncome: 100,
-        totalExpenses: 50
-      }
-    },
-    ui: {
-      textColor: "white",
-      backgroundColor: "yellow",
-      border: "2px solid red"
-    }
-  }, {
-    name: "Main",
-    isActive: true,
-    balance: {
-      cashAmount: "4",
-      currency: "$",
-      history: {
-        totalIncome: 100,
-        totalExpenses: 50
-      }
-    },
-    ui: {
-      textColor: "white",
-      backgroundColor: "blue",
-      border: "2px solid red"
-    }
-  }, {
-    name: "Main",
-    isActive: true,
-    balance: {
-      cashAmount: "5",
-      currency: "$",
-      history: {
-        totalIncome: 100,
-        totalExpenses: 50
-      }
-    },
-    ui: {
-      textColor: "white",
-      backgroundColor: "green",
-      border: "2px solid red"
-    }
-  }, {
-    name: "Main",
-    isActive: true,
-    balance: {
-      cashAmount: "6",
-      currency: "$",
-      history: {
-        totalIncome: 100,
-        totalExpenses: 50
-      }
-    },
-    ui: {
-      textColor: "white",
-      backgroundColor: "purple",
-      border: "2px solid red"
-    }
-  }];
+  @Input() user!: string;
+  @Input() bills!: Bill[];
   customOptions: OwlOptions = {
     stagePadding: 15,
     mouseDrag: true,
@@ -143,44 +46,34 @@ export class DashboardComponent implements OnInit {
         items: 5
       }
     },
-  }
+  };
+  @Input() activeBill!: Bill;
 
-  constructor(private userService: UserService, private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(response => {
-      this.bills = response.bills;
-      this.user = response.username;
-    })
   }
 
-  get activeBill(): Bill {
-    return this.bills.filter(bill => bill.isActive)[0];
-  }
-
-  makeActive(index: number): void {
+  makeActive(bill: Bill): void {
     this.bills.map(bill => bill.isActive = false);
-    this.bills[index].isActive = true;
+    bill.isActive = true;
   }
 
   openAddBillDialog(): void {
-    this.openDialog("New Bill");
+    this.openDialog("New Bill", getDefaultBill());
   }
 
-  openEditBillDialog(): void {
-    this.openDialog("Edit Bill");
+  openEditBillDialog(bill: Bill): void {
+    this.openDialog("Edit Bill", bill);
   }
 
-  private openDialog(title: string): void {
+  private openDialog(title: string, bill: Bill): void {
     const dialogRef = this.dialog.open(BillManipulationModalComponent, {
       data: {
         title: title,
         submitButtonText: title == "New Bill" ? "Create" : "Edit",
+        bill: bill
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 }
