@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,8 @@ import { BalanceInfoComponent } from './components/balance-info/balance-info.com
 import { BillEditFormComponent } from './components/shared/bill-edit-form/bill-edit-form.component';
 import { BillUiEditFormComponent } from './components/shared/bill-ui-edit-form/bill-ui-edit-form.component';
 import { BillManipulationModalComponent } from './components/modals/bill-manipulation-modal/bill-manipulation-modal.component';
+import { AccessTokenInterceptor } from './services/helpers/AccessTokenInterceptor';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { BillManipulationModalComponent } from './components/modals/bill-manipul
     BillManipulationModalComponent,
     BillEditFormComponent,
     BillUiEditFormComponent,
-    BillManipulationModalComponent
+    BillManipulationModalComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,13 @@ import { BillManipulationModalComponent } from './components/modals/bill-manipul
     ReactiveFormsModule,
     ColorPickerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AccessTokenInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

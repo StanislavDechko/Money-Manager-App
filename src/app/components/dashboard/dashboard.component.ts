@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DashboardComponent implements OnInit {
   now: Date = new Date();
+  user!: string;
   bills: Bill[] = [{
     name: "Main",
     isActive: true,
@@ -149,6 +150,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUser().subscribe(response => {
       this.bills = response.bills;
+      this.user = response.username;
     })
   }
 
