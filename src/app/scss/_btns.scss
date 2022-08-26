@@ -1,5 +1,13 @@
 @import "./config";
 
+::ng-deep .mat-dialog-container {
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .btn {
     width: 100px;
     height: 40px;
@@ -15,4 +23,9 @@
 .btn-primary {
     background-color: $text-color-blue;
     color: white;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: end;
 }

@@ -1,18 +1,42 @@
-<form [formGroup]="form" class="form" >
+<form [formGroup]="form">
     <div class="form-control">
-        <label class="form-label" for="bill-name">Background Color</label>
-        <input [(colorPicker)]="bill.ui.backgroundColor" [style.background]="bill.ui.backgroundColor" class="picker"/>
+        <label class="form-label">Background Color</label>
+        <input class="form-input picker" [(colorPicker)]="bill.ui.backgroundColor" [style.background]="bill.ui.backgroundColor"/>
     </div>
     
     <div class="form-control">
-        <label class="form-label" for="currency">Text Color</label>
-        <input [(colorPicker)]="bill.ui.textColor" [style.background]="bill.ui.textColor" class="picker">
+        <label class="form-label">Text Color</label>
+        <input [(colorPicker)]="bill.ui.textColor" [style.background]="bill.ui.textColor" class="form-input picker">
     </div>
     
-    <div class="customization-btn-container" (click)="onNavigationButtonClicked()">
-        <div class="customization-btn">
-            <span class="material-symbols-outlined">arrow_back</span>
-            <p>Bill Info</p>
+    <div class="form-control">
+        <label class="form-label">Border</label>
+        <div class="form-input border">
+            <div class="part">
+                <mat-slider
+                    thumbLabel
+                    step="0.1"
+                    min="0"
+                    max="10"
+                    aria-label="units"
+                    [(value)]="bill.ui.border!.width"></mat-slider>
+            </div>
+            <div class="part">
+                <mat-select [(value)]="bill.ui.border!.type">
+                    <mat-option value="dashed">Dashed</mat-option>
+                    <mat-option value="solid">Solid</mat-option>
+                    <mat-option value="dotted">Dotted</mat-option>
+                </mat-select>
+            </div>
+            <div class="part">
+                <input [(colorPicker)]="bill.ui.border!.color!" [style.background]="bill.ui.border!.color" class="picker">
+            </div>
         </div>
     </div>
 </form>
+<div class="customization-btn-container">
+    <div class="customization-btn" (click)="onNavigationButtonClicked()">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <p>Bill Info</p>
+    </div>
+</div>

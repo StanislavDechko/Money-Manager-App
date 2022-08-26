@@ -1,8 +1,12 @@
 import { BillManipulationModalComponent } from './../modals/bill-manipulation-modal/bill-manipulation-modal.component';
 import { Bill, getDefaultBill } from './../../interfaces/Bill';
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
+import { BillService } from 'src/app/services/bill.service';
+import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationComponent } from '../shared/notification/notification.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -48,8 +52,12 @@ export class DashboardComponent implements OnInit {
     },
   };
   @Input() activeBill!: Bill;
+  @Output() activeBillChange: EventEmitter<Bill> = new EventEmitter<Bill>();
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog, 
+    private billsService: BillService, 
+    private notification: NotificationComponent) { }
 
   ngOnInit(): void {
   }
@@ -57,6 +65,9 @@ export class DashboardComponent implements OnInit {
   makeActive(bill: Bill): void {
     this.bills.map(bill => bill.isActive = false);
     bill.isActive = true;
+    this.activeBill = bill;
+    this.billsService.editBill(bill).subscribe();
+    this.activeBillChange.emit(bill);
   }
 
   openAddBillDialog(): void {
@@ -73,7 +84,27 @@ export class DashboardComponent implements OnInit {
         title: title,
         submitButtonText: title == "New Bill" ? "Create" : "Edit",
         bill: bill
-      }
+      },
+      panelClass: "add-bill" 
+    });
+    const createBill = dialogRef.componentInstance.createBill.subscribe((bill) => {
+      this.billsService.createBill(bill).subscribe(response => {
+        this.bills = response.bills;
+        this.notification.notify("Created Successfully!");
+      });
+    });
+    const edit = dialogRef.componentInstance.editBill.subscribe((bill) => {
+      this.billsService.editBill(bill).subscribe(response => {
+        this.activeBill = response;
+        this.notification.notify("Updated Successfully!");
+      });
+    });
+    const deleteBill = dialogRef.componentInstance.deleteBill.subscribe((bill) => {
+      this.billsService.deleteBill(bill).subscribe(reponse => {
+        this.bills = reponse.bills;
+        this.notification.notify("Deleted Successfully!");
+      });
     });
   }
+
 }

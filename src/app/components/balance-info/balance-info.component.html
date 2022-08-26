@@ -1,19 +1,19 @@
 <div class="balance">
-    <h1>{{ bill.balance.currency }}{{ bill.balance.cashAmount }}</h1>
+    <h1>{{ getCurrencyFormat(bill.balance.cashAmount, bill.balance.currency) }}</h1>
 </div>
 <div class="stats">
     <div class="income box">
         <h3 class="secondary-text">Income</h3>
         <div class="stats-info">
             <span class="material-symbols-outlined up-icon">trending_up</span>
-            <h3>+ {{ bill.balance.currency }}{{ bill.balance.history?.totalIncome }}</h3>
+            <h3>+ {{ getCurrencyFormat(bill.balance.history?.totalIncome!, bill.balance.currency) }}</h3>
         </div>
     </div>
     <div class="expense box">
         <h3 class="secondary-text">Expense</h3>
         <div class="stats-info">
             <span class="material-symbols-outlined down-icon">trending_down</span>
-            <h3>- {{ bill.balance.currency }}{{ bill.balance.history?.totalExpenses }}</h3>
+            <h3>- {{ getCurrencyFormat(bill.balance.history?.totalExpenses!, bill.balance.currency) }}</h3>
         </div>
     </div>
 </div>

@@ -1,20 +1,17 @@
 @import "../../../scss/forms";
 
-.customization-btn-container {
+::ng-deep mat-select {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    display: flex;
-    cursor: pointer;
-}
-
-.customization-btn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgba(34, 60, 80, 0.2);
-    cursor: pointer;
-}
-
-.customization-btn:hover {
-    color: $text-color-blue;
+    height: 100%;
+    border: 2px solid $text-color-blue;
+    border-radius: 0.4rem;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    background: none;
+    transition: all 200ms ease-in-out;
+    padding-left: 1.5rem;
 }

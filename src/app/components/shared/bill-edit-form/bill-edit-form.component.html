@@ -4,24 +4,23 @@
         <label class="form-label" for="bill-name">Name</label>
     </div>
     
-    <mat-form-field appearance="fill">
-        <mat-label>Currency</mat-label>
+    <div class="form-control">
+        <label class="form-label">Currency</label>
         <mat-select [(value)]="bill.balance.currency">
             <mat-option value="$">USD</mat-option>
             <mat-option value="€">EUR</mat-option>
             <mat-option value="BYN">BYN</mat-option>
         </mat-select>
-    </mat-form-field>
+    </div>
         
     <div class="form-control">
         <input class="form-input" id="initialBalance" type="text" formControlName="initialBalance" [(ngModel)]="bill.balance.cashAmount" required="required">
         <label class="form-label" for="initialBalance">Initial Balance</label>
     </div>
-    
+</form>
     <div class="customization-btn-container">
         <div class="customization-btn" (click)="onNavigationButtonClicked()">
             <p>Customize</p>
             <span class="material-symbols-outlined">arrow_forward</span>
         </div>
     </div>
-</form>

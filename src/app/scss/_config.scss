@@ -2,6 +2,9 @@ $primary-background-color: #F3F3F3;
 $secondary-background-color: #fff;
 $primary-text-color: #333;
 $text-color-blue: #3B57B6;
+$light-green: #87CEA1;
+$light-red: #DA7678;
+
 
 $border-radius: 30px;
 $box-shadow: 0px 0px 15px 10px rgba(34, 60, 80, 0.2);
@@ -10,3 +13,6 @@ $sidenav-width-wide-screen: 330px;
 $sidenav-width-desktop: 330px;
 // $sidenav-width-tablet: ;
 // $sidenav-width-mobile: ;
+::ng-deep .mat-snack-bar-container {
+    background-color: $secondary-background-color;
+}

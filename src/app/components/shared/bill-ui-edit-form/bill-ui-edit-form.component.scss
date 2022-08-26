@@ -1,26 +1,5 @@
 @import "../../../scss/forms";
 
-.form-control {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgba(34, 60, 80, 0.2);
-    border-radius: 0.4rem;
-}
-
-.form-control .form-input {
-    position: relative;
-}
-
-.form-control .form-label {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    top: 0;
-    width: 100%;
-}
-
 .picker {
     width: 30px;
     height: 100%;
@@ -29,21 +8,23 @@
     cursor: pointer;
 }
 
-.customization-btn-container {
-    width: 100%;
+.border {
     display: flex;
-    cursor: pointer;
-}
-
-.customization-btn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    color: rgba(34, 60, 80, 0.2);
-    cursor: pointer;
-}
+    position: relative;
 
-.customization-btn:hover {
-    color: $text-color-blue;
+    .part {
+
+        .picker {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        ::ng-deep mat-select {
+            width: 100%;
+            border: none;
+            position: relative;
+        }
+    }
 }

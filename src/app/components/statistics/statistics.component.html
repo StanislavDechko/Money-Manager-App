@@ -1,8 +1,33 @@
 <div class="statistics-container">
-    <div class="charts-container">
-
+    <div class="charts-container" >
+        <div class="pie-charts">
+            <ngx-charts-advanced-pie-chart
+                [view]="[500, 250]"
+                *ngIf="renderPieChart" 
+                [label]="'Expenses'"
+                [results]="expensePieChartData"
+                [animations]="false"
+                [gradient]="false">
+            </ngx-charts-advanced-pie-chart>
+            <ngx-charts-advanced-pie-chart
+                [view]="[500, 250]"
+                *ngIf="renderPieChart" 
+                [label]="'Income'"
+                [results]="incomePieChartData"
+                [animations]="false"
+                [gradient]="false">
+            </ngx-charts-advanced-pie-chart>
+        </div>
+        <ngx-charts-line-chart
+            *ngIf="renderLineChart"
+            [view]="[900, 400]"
+            [legend]="legend"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [results]="lineChartData" >
+</ngx-charts-line-chart>
     </div>
     <div class="latest-transactions">
-        <app-latest-transactions [bill]="bill"></app-latest-transactions>
+        <app-latest-transactions [bill]="bill" (billChange)="onBillChange($event)"></app-latest-transactions>
     </div>
 </div>

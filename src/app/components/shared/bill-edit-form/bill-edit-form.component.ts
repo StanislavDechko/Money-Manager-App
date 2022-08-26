@@ -23,8 +23,6 @@ export class BillEditFormComponent implements OnInit {
   }
   
   onNavigationButtonClicked() {
-    console.log(2);
-    
     this.navigationButtonClicked.emit();
   }
 }

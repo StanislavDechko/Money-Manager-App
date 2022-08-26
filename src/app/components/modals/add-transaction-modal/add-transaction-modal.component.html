@@ -1,0 +1,106 @@
+<h2 class="header">Add Transaction</h2>
+<div class="modal-content">
+    <div class="left part">
+        <form [formGroup]="form">
+            <div class="form-control">
+                <input class="form-input" id="description" type="text" formControlName="description"
+                    required="required" placeholder="my new transaction">
+                <label class="form-label" for="description">Description</label>
+            </div>
+
+            <div class="row">
+                <div class="form-control">
+                    <input class="form-input" id="sum" type="text" formControlName="sum" required="required" >
+                    <label class="form-label" for="sum">Sum</label>
+                </div>
+    
+                <div class="form-control">
+                    <label class="form-label">Currency</label>
+                    <mat-select formControlName="currency">
+                        <mat-option value="$">USD</mat-option>
+                        <mat-option value="€">EUR</mat-option>
+                        <mat-option value="BYN">BYN</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            
+            <div class="form-control">
+                <input class="form-input" id="date" type="datetime-local" formControlName="date" value="" required="required">
+                <label class="form-label" for="date">Date</label>
+            </div>
+            
+            <div class="form-control">
+                <label class="form-label">Category</label>
+                <mat-select formControlName="category">
+                    <div class="option">
+                        <mat-icon>sports_esports</mat-icon>
+                        <mat-option value="Entertainment">
+                            Entertainment
+                        </mat-option>
+                    </div>
+                    <div class="option">
+                        <mat-icon>lunch_dining</mat-icon>
+                        <mat-option value="Food">
+                            Food
+                        </mat-option>
+                    </div>
+                    <div class="option">
+                        <mat-icon>health_and_safety</mat-icon>
+                        <mat-option value="Health">
+                                Health
+                        </mat-option>
+                    </div>
+                    <div class="option">
+                        <mat-icon>directions_bus</mat-icon>
+                        <mat-option value="Transportation">
+                                Transportation
+                        </mat-option>
+                    </div>
+                    <div class="option">
+                        <mat-icon>school</mat-icon>
+                        <mat-option value="Education">
+                                Education
+                        </mat-option>
+                    </div>
+                    <div class="option">
+                        <mat-icon>more_horiz</mat-icon>
+                        <mat-option value="Others">
+                                Others
+                        </mat-option>
+                    </div>
+                </mat-select>
+            </div>
+
+            <div class="form_toggle">
+                <div class="form_toggle-item item-1">
+                    <input id="fid-1" type="radio" name="isIncome" value=false formControlName="isIncome" checked>
+                    <label for="fid-1">Expense</label>
+                </div>
+                <div class="form_toggle-item item-2">
+                    <input id="fid-2" type="radio" name="isIncome" formControlName="isIncome" value=true>
+                    <label for="fid-2">Income</label>
+                </div>
+            </div>
+        </form>
+        <div mat-dialog-actions class="btns-container">
+            <button mat-button class="btn" (click)="close()">Cancel</button>
+            <button mat-button class="btn btn-primary" cdkFocusInitial (click)="createTransaction()">Create</button>
+        </div>
+    </div>
+    <div class="right part">
+        <input type="file" #fileDropRef id="fileDropRef" accept=".pdf" (change)="fileBrowseHandler($event)"/>
+        <div class="right-part-content" appDragAndDrop (fileDropped)="onFileDropped($event)">
+            <span class="material-symbols-outlined">file_upload</span>
+            <h4>Drag and drop bank statement</h4>
+            <h4>Or</h4>
+            <label for="fileFropRef" (click)="browseFiles()">Browse</label>
+        </div>
+        <div class="files" *ngFor="let file of files; let i = index">
+            <div class="file">
+                <p>{{ getFileName(file?.name) }}</p>
+            </div>
+            <span class="material-symbols-outlined done" (click)="onShowPreview(file)">done</span>
+            <span class="material-symbols-outlined delete" (click)="deleteFile(i)">delete</span>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,19 @@
 <h2>Latest Transactions</h2>
+<div class="transactions-content">
+    <div *ngIf="bill" >
+        <app-transaction 
+        *ngFor="let transaction of bill.balance.history?.transactions" 
+        [transaction]="transaction"
+        (deleteTransaction)="onDeleteTransaction($event)"></app-transaction>
+    </div>
+</div>
+<div class="btn-container">
+    <button class="btn btn-primary" (click)="openDialog()">
+        Add Transactions
+    </button>
+</div>
+<app-transactions-preview-modal 
+    *ngIf="showPreview" 
+    [file]="file"
+    (allTransactionsDeleted)="onAllTransactionsDeleted()"
+    [activeBill]="bill" (activeBillChange)="onBillChange($event)"></app-transactions-preview-modal>

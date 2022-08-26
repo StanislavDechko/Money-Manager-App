@@ -9,8 +9,19 @@
 
     .latest-transactions {
         padding-left: 2rem;
-        height: 100%;
+        height: 90%;
         width: 100%;
         border-left: 2px solid darken($primary-background-color, 20%);
+    }
+    
+    .charts-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .pie-charts {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }

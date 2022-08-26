@@ -1,0 +1,84 @@
+@import "../../../scss/config";
+
+.modal {
+    padding: 2rem;
+    min-width: 300px;
+    min-height: 400px;
+    background-color: $secondary-background-color;
+    border-radius: 15px;
+    box-shadow: $box-shadow;
+    overflow-y: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10000;
+    cursor: move;
+}
+
+.container {
+    position: relative;
+}
+
+.delete-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: $light-red;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    transition: .5s ease;
+}
+
+.container:hover .delete-overlay {
+    width: 20%;
+    right: 0;
+}
+
+.delete {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    color: $text-color-blue;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: $text-color-blue;
+    color: white;
+}
+
+.btns-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}

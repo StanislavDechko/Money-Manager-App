@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Bill } from 'src/app/interfaces/Bill';
+import { Bill, getCurrencyFormat } from 'src/app/interfaces/Bill';
 
 @Component({
   selector: 'app-bill',
@@ -17,5 +17,9 @@ export class BillComponent implements OnInit {
 
   editBill(): void {
     this.editButtonClicked.emit();
+  }
+
+  getCurrencyFormat(sum: number, currency: string) {
+    return getCurrencyFormat(sum, currency);
   }
 }

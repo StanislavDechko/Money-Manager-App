@@ -1,0 +1,25 @@
+<div class="modal"
+    cdkDrag 
+    cdkDragHandle
+    cdkDragBoundary=".main-content">
+    <h2>
+    Transactions
+    </h2>
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <div *ngIf="!loading">
+        <div class="transactions" *ngFor="let transaction of transactions; let i = index">
+            <div class="container">
+                <app-transaction [transaction]="transaction"></app-transaction>
+                <div class="delete-overlay">
+                    <span class="material-symbols-outlined delete" (click)="deleteTransaction(i)">delete</span>
+                </div>
+            </div>
+        </div>
+        <div class="btns-container">
+            <div class="btn btn-primary" (click)="addTransactions()">
+                Add
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,10 +5,10 @@
     height: 150px;
     background: var(--background-color);
     border-radius: 20px;
+    border: var(--border);
     padding: 20px;
     color: var(--text-color);
     display: flex;
-    border: var(--border);
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;

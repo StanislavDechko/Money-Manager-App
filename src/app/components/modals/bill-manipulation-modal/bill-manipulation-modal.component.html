@@ -1,12 +1,17 @@
 <div class="modal-container">
-    <h1>{{ data.title }}</h1>
+    <header class="modal-header">
+        <h1>{{ data.title }}</h1>
+        <span *ngIf="data.title ==='Edit Bill'" class="material-symbols-outlined delete" (click)="onDeleteBill(data.bill)">delete</span>
+    </header>
     <div>
         <app-bill [bill]="data.bill" class="bill-container"></app-bill>
-        <app-bill-edit-form *ngIf="showFirst" [bill]="data.bill" (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-edit-form>
-        <app-bill-ui-edit-form *ngIf="!showFirst" [bill]="data.bill" (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-ui-edit-form>
+        <app-bill-edit-form *ngIf="showFirst" [bill]="data.bill"
+            (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-edit-form>
+        <app-bill-ui-edit-form *ngIf="!showFirst" [bill]="data.bill"
+            (navigationButtonClicked)="onNavigationButtonClicked()"></app-bill-ui-edit-form>
     </div>
     <div mat-dialog-actions class="btns-container">
         <button mat-button class="btn" (click)="close()">Cancel</button>
-        <button mat-button class="btn btn-primary" cdkFocusInitial>{{ data.submitButtonText }}</button>
+        <button mat-button class="btn btn-primary" cdkFocusInitial (click)="onSubmitButtonClick()">{{ data.submitButtonText }}</button>
     </div>
 </div>

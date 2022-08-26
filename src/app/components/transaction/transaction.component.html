@@ -1,0 +1,29 @@
+<div class="transaction-container" (contextmenu)="onRightClick($event)" [ngClass]="{ 'income': transaction.isIncome, 'expense': !transaction.isIncome }">
+    <div class="cash-info">
+        <h3>{{ transaction.sum }}</h3>
+        <h5>{{ transaction.currency }}</h5>
+    </div>
+    <div class="transaction-info">
+        <p>{{ transaction.date | date: "HH:mm, dd MMMM yyyy" }}</p>
+        <p>{{ transaction.description }}</p>
+    </div>
+    <div class="menu-trigger"
+        [style.left]="menuTopLeftPosition.x" 
+        [style.top]="menuTopLeftPosition.y"
+        [matMenuTriggerFor]="menu" >
+    </div>
+    <mat-menu #menu="matMenu" >
+        <button mat-menu-item class="menu-item">
+            <span class="material-symbols-outlined">info</span>
+            <span>View Details</span>
+        </button>
+        <button mat-menu-item class="menu-item">
+            <span class="material-symbols-outlined">edit</span>
+            <span>Edit</span>
+        </button>
+        <button mat-menu-item class="menu-item" (click)="onDeleteTransaction()">
+            <span class="material-symbols-outlined">delete</span>
+            <span>Delete</span>
+        </button>
+    </mat-menu>
+</div>

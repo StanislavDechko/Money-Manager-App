@@ -1,4 +1,4 @@
-import { Bill } from './../../interfaces/Bill';
+import { Bill, getCurrencyFormat } from './../../interfaces/Bill';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -14,4 +14,7 @@ export class BalanceInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getCurrencyFormat(sum: number, currency: string) {
+    return getCurrencyFormat(sum, currency);
+  }
 }
